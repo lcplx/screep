@@ -8,8 +8,6 @@ Game.spawns['Spawn1'].room.controller.activateSafeMode();
 
 
 module.exports.loop = function () {
-        var x=  Game.spawns['Spawn1'].room.find(FIND_SOURCES);
-        console.log(x)
         var tower = Game.getObjectById('8f5e9cd1a099261b14e91e97');
         if(tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -30,7 +28,7 @@ module.exports.loop = function () {
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var harvesterBig=_.filter(Game.creeps,(creep) =>creep.memory.role =='harvesterBig');
     
-    if(harvesterBig.length<3){
+    if(harvesterBig.length<10){
        var newName = 'harvesterBig' + Game.time;
         console.log('Spawning new harvesterBig: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,CARRY,MOVE], newName, 
